@@ -22,7 +22,7 @@ let stringLength = '';
 
 
 var symbolCount = function() {
-	stringLength = prompt(`enter the number of characters`);
+	stringLength = prompt(`Enter the number of characters`);
 
 	function pickRandom() {
 	    return keyboardJoined[Math.round(Math.random() * keyboardJoined.length)];
@@ -33,7 +33,7 @@ var symbolCount = function() {
 	console.log(randomString)
 
 	if (stringLength > 0 && stringLength < keyboard.length && stringLength !== 0) {
-		let checkVal = prompt(`${randomString}`);
+		let checkVal = prompt(`Repeat this ${randomString}`);
 		checkVal = Array.from(checkVal).join('');
 		let mistakesCounter = 0;
 		console.log(checkVal)
@@ -77,7 +77,7 @@ var symbolCount = function() {
 
 			var answer = (b.diff(a)).length;
 
-			alert(`error rate ${answer}`); 
+			alert(`Error rate ${answer}`); 
 			symbolCount();
 		}
 
