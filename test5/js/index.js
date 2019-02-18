@@ -35,7 +35,6 @@ var symbolCount = function() {
 	if (stringLength > 0 && stringLength < keyboard.length && stringLength !== 0) {
 		let checkVal = prompt(`Repeat this ${randomString}`);
 		checkVal = Array.from(checkVal).join('');
-		let mistakesCounter = 0;
 		console.log(checkVal)
 
 		if (checkVal == randomString) {
@@ -72,7 +71,9 @@ var symbolCount = function() {
 
 
 			Array.prototype.diff = function(a) {
-			    return this.filter(function(i) {return a.indexOf(i) < 0;});
+			    return this.filter(function(i) {
+				    return a.indexOf(i) < 0;
+			    });
 			};
 
 			var answer = (b.diff(a)).length;
