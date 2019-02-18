@@ -34,51 +34,32 @@ var symbolCount = function() {
 
 	if (stringLength > 0 && stringLength < keyboard.length && stringLength !== 0) {
 		let checkVal = prompt(`Repeat this ${randomString}`);
-		checkVal = Array.from(checkVal).join('');
 		console.log(checkVal)
 
-		if (checkVal == randomString) {
+		if (checkVal === randomString) {
 			alert('True')
+		} else if (checkVal.length > randomString.length || checkVal.length < randomString.length) {
+			alert(`Wrong symbols quantity!`); 
+			symbolCount();
 		} else {
+			let counter = 0;
+			let errorSymbol;
+			let errorNum;
+			function arr_diff (a, b) {
+				var a = Array.from(randomString);
+				var b = Array.from(checkVal);
+				for (let i = 0; i < a.length; ++i) {
+					if (a[i] !== b[i]){
+						counter++;
+						errorSymbol = a[i];
+						errorNum = i + 1;
+					}
+				}
+			} 
 
-			var a = Array.from(randomString);
-			var b = Array.from(checkVal);
+			arr_diff();
 
-			// function arr_diff (a1, a2) {
-
-			//     var a = [], diff = [];
-
-			//     for (var i = 0; i < a1.length; i++) {
-			//         a[a1[i]] = true;
-			//     }
-
-			//     for (var i = 0; i < a2.length; i++) {
-			//         if (a[a2[i]]) {
-			//             delete a[a2[i]];
-			//         } else {
-			//             a[a2[i]] = true;
-			//         }
-			//     }
-
-			//     for (var k in a) {
-			//         diff.push(k);
-			//     }
-
-			//     return diff;
-			// }
-
-			// console.log(arr_diff(a, b));
-
-
-			Array.prototype.diff = function(a) {
-			    return this.filter(function(i) {
-				    return a.indexOf(i) < 0;
-			    });
-			};
-
-			var answer = (b.diff(a)).length;
-
-			alert(`Error rate ${answer}`); 
+			alert(`Error rate ${counter}. Start on ${errorSymbol} (${errorNum})`); 
 			symbolCount();
 		}
 
@@ -89,7 +70,3 @@ var symbolCount = function() {
 }
 
 symbolCount()
-
-
-
-
